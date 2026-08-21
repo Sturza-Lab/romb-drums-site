@@ -8,7 +8,7 @@
 <meta name="description" content="We are the pulse and heartbeat of your event. Live percussion over your DJ set for luxury weddings and events in Goa, India.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,900;1,9..144,500;1,9..144,900&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,900;1,9..144,500;1,9..144,900&family=Work+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,900;1,500;1,900&family=Manrope:wght@400;500;600;700&family=Noto+Serif+SC:wght@500;700;900&family=Noto+Sans+SC:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
     --bg:#14100D;
@@ -24,6 +24,13 @@
     --font-body:'Work Sans',sans-serif;
     --container:1180px;
   }
+  /* Fraunces/Work Sans ship no Cyrillic or CJK glyphs - swap the whole
+     display/body pairing per language rather than silently falling back
+     to a generic system font */
+  html[lang="ru"]{ --font-display:'Playfair Display',serif; --font-body:'Manrope',sans-serif; }
+  html[lang="zh"]{ --font-display:'Noto Serif SC',serif; --font-body:'Noto Sans SC',sans-serif; }
+  html[lang="zh"] .eyebrow,html[lang="zh"] .ticker span,html[lang="zh"] .tl-when{ letter-spacing:.06em; }
+  html[lang="zh"] h1,html[lang="zh"] h2{ letter-spacing:0; }
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
   body{
@@ -80,7 +87,7 @@
   /* ===== NAV ===== */
   .nav{
     position:fixed;top:0;left:0;right:0;z-index:50;
-    display:flex;align-items:center;justify-content:space-between;
+    display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;row-gap:10px;
     padding:18px 24px;
     background:linear-gradient(to bottom, rgba(20,16,13,.85), rgba(20,16,13,0));
     backdrop-filter:blur(2px);
@@ -98,6 +105,21 @@
     transition:background .25s ease, transform .25s ease, box-shadow .25s ease;
   }
   .nav-cta:hover{background:var(--wine-hover);transform:translateY(-1px);box-shadow:0 6px 18px -6px rgba(140,29,43,.6)}
+  .nav-right{display:flex;align-items:center;gap:14px;min-width:0}
+  .lang-switch{display:flex;align-items:center;gap:2px;border:1px solid var(--border);border-radius:2px;padding:2px}
+  .lang-btn{
+    font-family:var(--font-body);font-size:.72rem;font-weight:600;letter-spacing:.04em;
+    padding:7px 10px;border-radius:1px;color:var(--ink-muted);background:transparent;border:none;cursor:pointer;
+    white-space:nowrap;
+    transition:background .2s ease,color .2s ease;
+  }
+  .lang-btn:hover{color:var(--ink)}
+  .lang-btn.active{background:var(--gold);color:#14100D}
+  @media(max-width:480px){
+    .nav-right{gap:8px}
+    .lang-btn{padding:6px 7px;font-size:.66rem;flex-shrink:0}
+    .nav-cta{padding:9px 13px;font-size:.72rem;line-height:1.25;text-align:center;min-width:0;overflow-wrap:break-word}
+  }
 
   /* ===== HERO ===== */
   .hero{
@@ -334,7 +356,14 @@
 
 <nav class="nav">
   <a class="word" href="#top">DRUM QUEENS<small>@romb_drums</small></a>
-  <a class="nav-cta" href="https://wa.me/79261583965?text=Hi%2C%20I%27d%20like%20to%20book%20the%20show" target="_blank" rel="noopener">Book the show</a>
+  <div class="nav-right">
+    <div class="lang-switch" role="group" aria-label="Language">
+      <button class="lang-btn" data-lang="en" type="button">EN</button>
+      <button class="lang-btn" data-lang="ru" type="button">RU</button>
+      <button class="lang-btn" data-lang="zh" type="button">中文</button>
+    </div>
+    <a class="nav-cta" data-wa="msg_book" data-i18n="nav_cta" href="https://wa.me/79261583965?text=Hi%2C%20I%27d%20like%20to%20book%20the%20show" target="_blank" rel="noopener">Book the show</a>
+  </div>
 </nav>
 
 <header class="hero" id="top">
@@ -343,66 +372,66 @@
   </video>
   <div class="scrim"></div>
   <div class="hero-inner wrap">
-    <span class="eyebrow">Live Percussion × DJ Sets</span>
-    <h1>We are the pulse and heartbeat of your event</h1>
-    <p class="lede">We are Drum Queens - live percussionists turning every DJ drop into a moment the whole room can feel.</p>
+    <span class="eyebrow" data-i18n="hero_eyebrow">Live Percussion × DJ Sets</span>
+    <h1 data-i18n="hero_h1">We are the pulse and heartbeat of your event</h1>
+    <p class="lede" data-i18n="hero_lede">We are Drum Queens - live percussionists turning every DJ drop into a moment the whole room can feel.</p>
     <div class="hero-actions">
-      <a class="btn" href="https://wa.me/79261583965?text=Hi%2C%20I%27d%20like%20to%20book%20the%20show" target="_blank" rel="noopener">Bring this energy to your event</a>
-      <a class="btn btn-ghost" href="#watch">Watch it live</a>
+      <a class="btn" data-wa="msg_book" data-i18n="hero_cta" href="https://wa.me/79261583965?text=Hi%2C%20I%27d%20like%20to%20book%20the%20show" target="_blank" rel="noopener">Bring this energy to your event</a>
+      <a class="btn btn-ghost" data-i18n="hero_cta2" href="#watch">Watch it live</a>
     </div>
   </div>
-  <span class="scroll-cue">Scroll</span>
+  <span class="scroll-cue" data-i18n="scroll_cue">Scroll</span>
 </header>
 
 <div class="proof">
   <div class="wrap proof-row">
-    <span><strong>Performed at JW Marriott Goa</strong></span>
-    <span><strong>8,700+</strong> on Instagram</span>
-    <span>The Greatest Drum Show</span>
+    <span><strong data-i18n="proof_1">Performed at JW Marriott Goa</strong></span>
+    <span><strong>8,700+</strong> <span data-i18n="proof_2b">on Instagram</span></span>
+    <span data-i18n="proof_3">The Greatest Drum Show</span>
   </div>
 </div>
 
 <section class="pad" id="watch">
   <div class="wrap">
     <div class="head-row reveal">
-      <span class="eyebrow">See it, feel it, book it</span>
-      <h2>Now picture this at your event</h2>
-      <p class="lede">The DJ drops. The drums hit. The whole room moves as one. This is the moment your guests will still be talking about tomorrow.</p>
-      <a class="mini-cta" href="https://wa.me/79261583965?text=Hi%2C%20I%27d%20love%20to%20bring%20this%20energy%20to%20my%20event.%20The%20date%20is..." target="_blank" rel="noopener">Bring this energy to your event <span>→</span></a>
+      <span class="eyebrow" data-i18n="watch_eyebrow">See it, feel it, book it</span>
+      <h2 data-i18n="watch_h2">Now picture this at your event</h2>
+      <p class="lede" data-i18n="watch_lede">The DJ drops. The drums hit. The whole room moves as one. This is the moment your guests will still be talking about tomorrow.</p>
+      <a class="mini-cta" data-wa="msg_watch" href="https://wa.me/79261583965?text=Hi%2C%20I%27d%20love%20to%20bring%20this%20energy%20to%20my%20event.%20The%20date%20is..." target="_blank" rel="noopener"><span data-i18n="hero_cta">Bring this energy to your event</span> <span>→</span></a>
     </div>
   </div>
   <div class="gallery-scroller reveal">
     <div class="g-card" data-src="assets/web/gallery-1.mp4">
-      <img src="assets/web/gallery-1-poster.jpg" alt="Live bass toms at JW Marriott Goa, confetti drop">
+      <img src="assets/web/gallery-1-poster.jpg" alt="Live bass toms at JW Marriott Goa, confetti drop" data-i18n-alt="gallery_alt_1">
       <div class="play"><span class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
     </div>
     <div class="g-card" data-src="assets/web/gallery-2.mp4">
-      <img src="assets/web/gallery-2-poster.jpg" alt="Close-up drummer in feather headdress, Bastian Riviera Goa">
+      <img src="assets/web/gallery-2-poster.jpg" alt="Close-up drummer in feather headdress, Bastian Riviera Goa" data-i18n-alt="gallery_alt_2">
       <div class="play"><span class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
     </div>
     <div class="g-card" data-src="assets/web/gallery-3.mp4">
-      <img src="assets/web/gallery-3-poster.jpg" alt="Sunday Sundowner set, three drummers, Bastian Riviera Goa">
+      <img src="assets/web/gallery-3-poster.jpg" alt="Sunday Sundowner set, three drummers, Bastian Riviera Goa" data-i18n-alt="gallery_alt_3">
       <div class="play"><span class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
     </div>
     <div class="g-card" data-src="assets/web/gallery-4.mp4">
-      <img src="assets/web/gallery-4-poster.jpg" alt="Boat Trip Carnaval Opening, Mumbai">
+      <img src="assets/web/gallery-4-poster.jpg" alt="Boat Trip Carnaval Opening, Mumbai" data-i18n-alt="gallery_alt_4">
       <div class="play"><span class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
     </div>
     <div class="g-card" data-src="assets/web/gallery-5.mp4">
-      <img src="assets/web/gallery-5-poster.jpg" alt="Rooftop night set, duo close-up">
+      <img src="assets/web/gallery-5-poster.jpg" alt="Rooftop night set, duo close-up" data-i18n-alt="gallery_alt_5">
       <div class="play"><span class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
     </div>
   </div>
-  <div class="wrap"><p class="g-caption reveal">Every booking adds another clip to this reel.</p></div>
+  <div class="wrap"><p class="g-caption reveal" data-i18n="gallery_caption">Every booking adds another clip to this reel.</p></div>
 </section>
 
 <div class="ticker" aria-hidden="true">
   <div class="ticker-track">
     <span class="ticker-seg">
-      <span>WEDDINGS</span><span class="dot">✦</span><span>LUXURY EVENTS</span><span class="dot">✦</span><span>LIVE PERCUSSION</span><span class="dot">✦</span><span>INDIA</span><span class="dot">✦</span><span>INTERNATIONAL</span><span class="dot">✦</span><span>THE GREATEST DRUM SHOW</span><span class="dot">✦</span>
+      <span data-i18n="ticker_1">WEDDINGS</span><span class="dot">✦</span><span data-i18n="ticker_2">LUXURY EVENTS</span><span class="dot">✦</span><span data-i18n="ticker_3">LIVE PERCUSSION</span><span class="dot">✦</span><span data-i18n="ticker_4">INDIA</span><span class="dot">✦</span><span data-i18n="ticker_5">INTERNATIONAL</span><span class="dot">✦</span><span data-i18n="ticker_6">THE GREATEST DRUM SHOW</span><span class="dot">✦</span>
     </span>
     <span class="ticker-seg">
-      <span>WEDDINGS</span><span class="dot">✦</span><span>LUXURY EVENTS</span><span class="dot">✦</span><span>LIVE PERCUSSION</span><span class="dot">✦</span><span>INDIA</span><span class="dot">✦</span><span>INTERNATIONAL</span><span class="dot">✦</span><span>THE GREATEST DRUM SHOW</span><span class="dot">✦</span>
+      <span data-i18n="ticker_1">WEDDINGS</span><span class="dot">✦</span><span data-i18n="ticker_2">LUXURY EVENTS</span><span class="dot">✦</span><span data-i18n="ticker_3">LIVE PERCUSSION</span><span class="dot">✦</span><span data-i18n="ticker_4">INDIA</span><span class="dot">✦</span><span data-i18n="ticker_5">INTERNATIONAL</span><span class="dot">✦</span><span data-i18n="ticker_6">THE GREATEST DRUM SHOW</span><span class="dot">✦</span>
     </span>
   </div>
 </div>
@@ -412,27 +441,27 @@
   <div class="bg-scrim"></div>
   <div class="wrap show-grid">
     <div class="show-body reveal">
-      <span class="eyebrow">The show</span>
-      <h2>Not a performance. A pulse</h2>
-      <p>We don't adapt to the room. We take it over. Every drop lands like a command - and by the time the bass toms hit, your guests aren't dancing anymore. They're losing control.</p>
+      <span class="eyebrow" data-i18n="show_eyebrow">The show</span>
+      <h2 data-i18n="show_h2">Not a performance. A pulse</h2>
+      <p data-i18n="show_p">We don't adapt to the room. We take it over. Every drop lands like a command - and by the time the bass toms hit, your guests aren't dancing anymore. They're losing control.</p>
     </div>
     <div class="accent-list reveal">
-      <div class="accent-item"><span class="num">01</span>Drummers who command the room, not a script</div>
-      <div class="accent-item"><span class="num">02</span>Every entrance timed to your DJ's drop</div>
-      <div class="accent-item"><span class="num">03</span>The moment guests are still talking about the next morning</div>
+      <div class="accent-item"><span class="num">01</span><span data-i18n="accent_1">Drummers who command the room, not a script</span></div>
+      <div class="accent-item"><span class="num">02</span><span data-i18n="accent_2">Every entrance timed to your DJ's drop</span></div>
+      <div class="accent-item"><span class="num">03</span><span data-i18n="accent_3">The moment guests are still talking about the next morning</span></div>
     </div>
   </div>
 </section>
 
 <section class="pad">
   <div class="wrap">
-    <span class="eyebrow reveal">Hear the difference</span>
-    <h2 class="reveal">Without us. With us.</h2>
-    <p class="lede reveal">Press play. This is what a DJ set sounds like alone - and what it sounds like with us in the room.</p>
+    <span class="eyebrow reveal" data-i18n="diff_eyebrow">Hear the difference</span>
+    <h2 class="reveal" data-i18n="diff_h2">Without us. With us.</h2>
+    <p class="lede reveal" data-i18n="diff_lede">Press play. This is what a DJ set sounds like alone - and what it sounds like with us in the room.</p>
     <div class="diff-player reveal" id="diff-player">
       <div class="diff-tabs">
-        <button class="diff-tab active" data-src="assets/web/without-us.mp3">Without us</button>
-        <button class="diff-tab" data-src="assets/web/with-us.mp3">With us</button>
+        <button class="diff-tab active" data-src="assets/web/without-us.mp3" data-i18n="diff_tab_without">Without us</button>
+        <button class="diff-tab" data-src="assets/web/with-us.mp3" data-i18n="diff_tab_with">With us</button>
       </div>
       <div class="diff-controls">
         <button class="diff-play" id="diff-play" aria-label="Play">
@@ -450,13 +479,13 @@
   <img class="bg-img" src="assets/web/act-bg.jpg" alt="" aria-hidden="true">
   <div class="bg-scrim"></div>
   <div class="wrap act-body">
-    <span class="eyebrow reveal">The act</span>
-    <h2 class="reveal" style="margin-top:16px">A duo now. A trio from November</h2>
-    <p class="reveal">Two drummers hold the groove now, locked into each other as tightly as they're locked into the room. From November 2026, a third joins on bass toms - the same instinct, twice the low end, a beat that lands in the chest before the drop even hits.</p>
+    <span class="eyebrow reveal" data-i18n="show_eyebrow_act">The act</span>
+    <h2 class="reveal" style="margin-top:16px" data-i18n="act_h2">A duo now. A trio from November</h2>
+    <p class="reveal" data-i18n="act_p">Two drummers hold the groove now, locked into each other as tightly as they're locked into the room. From November 2026, a third joins on bass toms - the same instinct, twice the low end, a beat that lands in the chest before the drop even hits.</p>
     <div class="timeline reveal">
-      <div class="tl-chip now"><span class="pulse-ring" aria-hidden="true"></span><span class="tl-label">Duo</span><span class="tl-when">Now</span></div>
+      <div class="tl-chip now"><span class="pulse-ring" aria-hidden="true"></span><span class="tl-label" data-i18n="tl_duo">Duo</span><span class="tl-when" data-i18n="tl_duo_when">Now</span></div>
       <div class="tl-line"></div>
-      <div class="tl-chip"><span class="tl-label">Trio</span><span class="tl-when">Nov 2026</span></div>
+      <div class="tl-chip"><span class="tl-label" data-i18n="tl_trio">Trio</span><span class="tl-when" data-i18n="tl_trio_when">Nov 2026</span></div>
     </div>
   </div>
 </section>
@@ -465,12 +494,12 @@
   <img class="bg-img" src="assets/web/book-bg.jpg" alt="" aria-hidden="true">
   <div class="bg-scrim"></div>
   <div class="wrap">
-    <span class="eyebrow reveal">Book the show</span>
-    <h2 class="reveal">One message books the room</h2>
-    <p class="lede reveal">Send your date, venue and vibe - we'll get back to you with availability.</p>
+    <span class="eyebrow reveal" data-i18n="book_eyebrow">Book the show</span>
+    <h2 class="reveal" data-i18n="book_h2">One message books the room</h2>
+    <p class="lede reveal" data-i18n="book_lede">Send your date, venue and vibe - we'll get back to you with availability.</p>
     <span class="pulse-wrap reveal">
       <span class="pulse-ring" aria-hidden="true"></span>
-      <a class="btn btn-lg" href="https://wa.me/79261583965?text=Hi%2C%20I%27d%20like%20to%20book%20the%20show" target="_blank" rel="noopener">Bring this energy to your event</a>
+      <a class="btn btn-lg" data-wa="msg_book" data-i18n="hero_cta" href="https://wa.me/79261583965?text=Hi%2C%20I%27d%20like%20to%20book%20the%20show" target="_blank" rel="noopener">Bring this energy to your event</a>
     </span>
   </div>
 </section>
@@ -478,17 +507,17 @@
 <div class="riders-band">
   <div class="wrap">
     <div class="riders-text">
-      <span class="eyebrow">For your production team</span>
-      <h3>Technical &amp; hospitality riders</h3>
+      <span class="eyebrow" data-i18n="riders_eyebrow">For your production team</span>
+      <h3 data-i18n="riders_h3">Technical &amp; hospitality riders</h3>
     </div>
     <div class="riders-btns">
       <a class="rider-btn" href="assets/riders/technical-rider.pdf" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
-        Technical Rider (PDF)
+        <span data-i18n="riders_tech">Technical Rider (PDF)</span>
       </a>
       <a class="rider-btn" href="assets/riders/hospitality-rider.pdf" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
-        Hospitality Rider (PDF)
+        <span data-i18n="riders_hosp">Hospitality Rider (PDF)</span>
       </a>
     </div>
   </div>
@@ -496,7 +525,7 @@
 
 <footer>
   <div class="wrap foot-row">
-    <a class="foot-ig" href="https://www.instagram.com/romb_drums/" target="_blank" rel="noopener">@romb_drums on Instagram</a>
+    <a class="foot-ig" href="https://www.instagram.com/romb_drums/" target="_blank" rel="noopener" data-i18n="footer_ig">@romb_drums on Instagram</a>
     <span class="foot-copy">© 2026 Drum Queens</span>
   </div>
 </footer>
@@ -558,6 +587,203 @@
         if(wasPlaying){ audio.play().catch(()=>{}); }
       });
     });
+  })();
+
+  // ===== i18n: EN / RU / ZH =====
+  (function(){
+    const WA_NUMBER = "79261583965";
+    const T = {
+      en: {
+        meta_title: "Drum Queens — Live Percussion for Luxury Events",
+        meta_description: "We are the pulse and heartbeat of your event. Live percussion over your DJ set for luxury weddings and events in Goa, India.",
+        nav_cta: "Book the show",
+        hero_eyebrow: "Live Percussion × DJ Sets",
+        hero_h1: "We are the pulse and heartbeat of your event",
+        hero_lede: "We are Drum Queens - live percussionists turning every DJ drop into a moment the whole room can feel.",
+        hero_cta: "Bring this energy to your event",
+        hero_cta2: "Watch it live",
+        scroll_cue: "Scroll",
+        proof_1: "Performed at JW Marriott Goa",
+        proof_2b: "on Instagram",
+        proof_3: "The Greatest Drum Show",
+        watch_eyebrow: "See it, feel it, book it",
+        watch_h2: "Now picture this at your event",
+        watch_lede: "The DJ drops. The drums hit. The whole room moves as one. This is the moment your guests will still be talking about tomorrow.",
+        gallery_alt_1: "Live bass toms at JW Marriott Goa, confetti drop",
+        gallery_alt_2: "Close-up drummer in feather headdress, Bastian Riviera Goa",
+        gallery_alt_3: "Sunday Sundowner set, three drummers, Bastian Riviera Goa",
+        gallery_alt_4: "Boat Trip Carnaval Opening, Mumbai",
+        gallery_alt_5: "Rooftop night set, duo close-up",
+        gallery_caption: "Every booking adds another clip to this reel.",
+        ticker_1: "WEDDINGS", ticker_2: "LUXURY EVENTS", ticker_3: "LIVE PERCUSSION",
+        ticker_4: "INDIA", ticker_5: "INTERNATIONAL", ticker_6: "THE GREATEST DRUM SHOW",
+        show_eyebrow: "The show",
+        show_h2: "Not a performance. A pulse",
+        show_p: "We don't adapt to the room. We take it over. Every drop lands like a command - and by the time the bass toms hit, your guests aren't dancing anymore. They're losing control.",
+        accent_1: "Drummers who command the room, not a script",
+        accent_2: "Every entrance timed to your DJ's drop",
+        accent_3: "The moment guests are still talking about the next morning",
+        diff_eyebrow: "Hear the difference",
+        diff_h2: "Without us. With us.",
+        diff_lede: "Press play. This is what a DJ set sounds like alone - and what it sounds like with us in the room.",
+        diff_tab_without: "Without us",
+        diff_tab_with: "With us",
+        show_eyebrow_act: "The act",
+        act_h2: "A duo now. A trio from November",
+        act_p: "Two drummers hold the groove now, locked into each other as tightly as they're locked into the room. From November 2026, a third joins on bass toms - the same instinct, twice the low end, a beat that lands in the chest before the drop even hits.",
+        tl_duo: "Duo", tl_duo_when: "Now",
+        tl_trio: "Trio", tl_trio_when: "Nov 2026",
+        book_eyebrow: "Book the show",
+        book_h2: "One message books the room",
+        book_lede: "Send your date, venue and vibe - we'll get back to you with availability.",
+        riders_eyebrow: "For your production team",
+        riders_h3: "Technical & hospitality riders",
+        riders_tech: "Technical Rider (PDF)",
+        riders_hosp: "Hospitality Rider (PDF)",
+        footer_ig: "@romb_drums on Instagram",
+        msg_book: "Hi, I'd like to book the show",
+        msg_watch: "Hi, I'd love to bring this energy to my event. The date is..."
+      },
+      ru: {
+        meta_title: "Drum Queens — живая перкуссия для люксовых событий",
+        meta_description: "Мы — пульс и сердцебиение вашего события. Живая перкуссия поверх сета диджея для люксовых свадеб и мероприятий в Гоа, Индия.",
+        nav_cta: "Забронировать шоу",
+        hero_eyebrow: "Живая перкуссия × Сеты диджея",
+        hero_h1: "Мы — пульс и сердцебиение вашего события",
+        hero_lede: "Мы — Drum Queens, живые перкуссионистки, превращающие каждый дроп диджея в момент, который чувствует весь зал.",
+        hero_cta: "Добавить эту энергию вашему событию",
+        hero_cta2: "Смотреть вживую",
+        scroll_cue: "Листайте",
+        proof_1: "Выступали в JW Marriott Гоа",
+        proof_2b: "в Instagram",
+        proof_3: "The Greatest Drum Show",
+        watch_eyebrow: "Увидеть, почувствовать, забронировать",
+        watch_h2: "А теперь представьте это на вашем событии",
+        watch_lede: "Диджей делает дроп. Барабаны вступают. Весь зал двигается как единое целое. Это момент, о котором ваши гости будут говорить ещё долго.",
+        gallery_alt_1: "Живые бас-томы в JW Marriott Гоа, залп конфетти",
+        gallery_alt_2: "Крупный план барабанщицы в перьевом уборе, Bastian Riviera Гоа",
+        gallery_alt_3: "Сет Sunday Sundowner, трое барабанщиков, Bastian Riviera Гоа",
+        gallery_alt_4: "Открытие Boat Trip Carnaval, Мумбаи",
+        gallery_alt_5: "Ночной сет на крыше, дуэт крупным планом",
+        gallery_caption: "Каждое бронирование добавляет ещё один момент в эту подборку.",
+        ticker_1: "СВАДЬБЫ", ticker_2: "ЛЮКСОВЫЕ СОБЫТИЯ", ticker_3: "ЖИВАЯ ПЕРКУССИЯ",
+        ticker_4: "ИНДИЯ", ticker_5: "МЕЖДУНАРОДНЫЙ УРОВЕНЬ", ticker_6: "THE GREATEST DRUM SHOW",
+        show_eyebrow: "Шоу",
+        show_h2: "Это не выступление. Это пульс",
+        show_p: "Мы не подстраиваемся под зал. Мы берём его под контроль. Каждый дроп звучит как команда — и к тому моменту, когда вступают бас-томы, ваши гости уже не танцуют. Они теряют голову.",
+        accent_1: "Барабанщицы, которые управляют залом, а не следуют сценарию",
+        accent_2: "Каждый выход синхронизирован с дропом вашего диджея",
+        accent_3: "Момент, о котором гости вспоминают ещё на следующее утро",
+        diff_eyebrow: "Услышьте разницу",
+        diff_h2: "Без нас. С нами.",
+        diff_lede: "Нажмите play. Вот как звучит сет диджея в одиночку — а вот как он звучит с нами в зале.",
+        diff_tab_without: "Без нас",
+        diff_tab_with: "С нами",
+        show_eyebrow_act: "Состав",
+        act_h2: "Сейчас — дуэт. С ноября — трио",
+        act_p: "Сейчас грув держат двое барабанщиц, настроенных друг на друга так же точно, как и на зал. С ноября 2026 к ним присоединится третья — на бас-томах: та же интуиция, вдвое больше низких частот, удар, который попадает в грудь ещё до самого дропа.",
+        tl_duo: "Дуэт", tl_duo_when: "Сейчас",
+        tl_trio: "Трио", tl_trio_when: "Ноя 2026",
+        book_eyebrow: "Забронировать шоу",
+        book_h2: "Одно сообщение — и зал забронирован",
+        book_lede: "Напишите дату, площадку и атмосферу события — мы ответим по наличию свободных дат.",
+        riders_eyebrow: "Для вашей продакшн-команды",
+        riders_h3: "Технический райдер и райдер приёма",
+        riders_tech: "Технический райдер (PDF)",
+        riders_hosp: "Райдер приёма (PDF)",
+        footer_ig: "@romb_drums в Instagram",
+        msg_book: "Здравствуйте! Хочу забронировать шоу.",
+        msg_watch: "Здравствуйте! Хочу привнести эту энергию на моё событие. Дата: ..."
+      },
+      zh: {
+        meta_title: "Drum Queens — 顶级活动的现场打击乐",
+        meta_description: "我们是您活动的脉搏与心跳。在DJ音乐之上加入现场打击乐，为果阿（印度）的顶级婚礼与活动增添力量。",
+        nav_cta: "预订演出",
+        hero_eyebrow: "现场打击乐 × DJ 音乐",
+        hero_h1: "我们是您活动的脉搏与心跳",
+        hero_lede: "我们是 Drum Queens — 现场打击乐手，让DJ的每一次高潮瞬间都成为全场共同感受的时刻。",
+        hero_cta: "为您的活动注入这股能量",
+        hero_cta2: "观看现场视频",
+        scroll_cue: "向下滑动",
+        proof_1: "曾在果阿JW万豪酒店演出",
+        proof_2b: "Instagram 粉丝",
+        proof_3: "The Greatest Drum Show",
+        watch_eyebrow: "看见，感受，预订",
+        watch_h2: "现在，想象这一幕出现在您的活动中",
+        watch_lede: "DJ的高潮落下，鼓声骤然响起，全场如一体般律动。这是宾客第二天还会津津乐道的瞬间。",
+        gallery_alt_1: "果阿JW万豪酒店现场低音鼓演奏，彩带纷飞",
+        gallery_alt_2: "特写：佩戴羽毛头饰的鼓手，果阿Bastian Riviera",
+        gallery_alt_3: "周日日落派对，三位鼓手同台，果阿Bastian Riviera",
+        gallery_alt_4: "孟买Boat Trip嘉年华开幕演出",
+        gallery_alt_5: "屋顶夜场演出，双人特写",
+        gallery_caption: "每一次预订，都会为这段精彩合集再添新画面。",
+        ticker_1: "婚礼", ticker_2: "顶级活动", ticker_3: "现场打击乐",
+        ticker_4: "印度", ticker_5: "国际化", ticker_6: "THE GREATEST DRUM SHOW",
+        show_eyebrow: "演出",
+        show_h2: "这不是表演，是脉动",
+        show_p: "我们不会去迎合全场的气氛，而是直接掌控它。每一次鼓点落下都如同一道号令 — 当低音鼓响起时，宾客们早已不只是在跳舞，而是彻底沉浸其中，无法自持。",
+        accent_1: "掌控全场的鼓手，而非照本宣科的表演者",
+        accent_2: "每次登场都精准踩在DJ的鼓点高潮上",
+        accent_3: "第二天清晨，宾客仍会津津乐道的瞬间",
+        diff_eyebrow: "聆听差异",
+        diff_h2: "没有我们。有了我们。",
+        diff_lede: "点击播放。这是DJ独自打碟的声音 — 而这，是加入我们之后的声音。",
+        diff_tab_without: "没有我们",
+        diff_tab_with: "有了我们",
+        show_eyebrow_act: "组合",
+        act_h2: "现在是二人组，11月起将成为三人组",
+        act_p: "目前由两位鼓手掌控节奏，她们彼此的默契如同与全场的共鸣一般精准。从2026年11月起，第三位鼓手将加入，负责低音鼓 — 同样的直觉，双倍的低频，在鼓点落下之前，这份震动便已直击胸腔。",
+        tl_duo: "二人组", tl_duo_when: "现在",
+        tl_trio: "三人组", tl_trio_when: "2026年11月",
+        book_eyebrow: "预订演出",
+        book_h2: "一条消息，即可预订",
+        book_lede: "告诉我们日期、场地和您想要的氛围 — 我们会尽快回复您档期情况。",
+        riders_eyebrow: "为您的制作团队",
+        riders_h3: "技术与接待需求单",
+        riders_tech: "技术需求单（PDF）",
+        riders_hosp: "接待需求单（PDF）",
+        footer_ig: "@romb_drums（Instagram）",
+        msg_book: "您好，我想预订演出。",
+        msg_watch: "您好，我想为我的活动加入这股能量。日期是……"
+      }
+    };
+
+    const switchBtns = document.querySelectorAll('.lang-btn');
+    const metaDesc = document.querySelector('meta[name="description"]');
+
+    function waHref(key, lang){
+      return `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(T[lang][key])}`;
+    }
+
+    function applyLang(lang){
+      if(!T[lang]) lang = 'en';
+      document.documentElement.setAttribute('lang', lang);
+      document.title = T[lang].meta_title;
+      if(metaDesc) metaDesc.setAttribute('content', T[lang].meta_description);
+
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if(T[lang][key] !== undefined) el.textContent = T[lang][key];
+      });
+      document.querySelectorAll('[data-i18n-alt]').forEach(el => {
+        const key = el.getAttribute('data-i18n-alt');
+        if(T[lang][key] !== undefined) el.setAttribute('alt', T[lang][key]);
+      });
+      document.querySelectorAll('[data-wa]').forEach(el => {
+        el.setAttribute('href', waHref(el.getAttribute('data-wa'), lang));
+      });
+      switchBtns.forEach(btn => btn.classList.toggle('active', btn.getAttribute('data-lang') === lang));
+
+      try{ localStorage.setItem('romb-lang', lang); }catch(e){}
+    }
+
+    switchBtns.forEach(btn => {
+      btn.addEventListener('click', () => applyLang(btn.getAttribute('data-lang')));
+    });
+
+    let initial = 'en';
+    try{ initial = localStorage.getItem('romb-lang') || 'en'; }catch(e){}
+    applyLang(initial);
   })();
 </script>
 </body>
