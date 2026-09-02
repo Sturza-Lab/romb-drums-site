@@ -289,6 +289,30 @@
   .tl-line{flex:0 0 34px;height:1px;background:var(--border);position:relative}
   .tl-line::after{content:"→";position:absolute;top:50%;left:50%;transform:translate(-50%,-52%);color:var(--gold);font-size:.9rem}
 
+  .act-cards{display:grid;grid-template-columns:1fr;gap:28px;margin-top:36px}
+  @media(min-width:860px){.act-cards{grid-template-columns:1fr 1fr;gap:36px;align-items:start}}
+  .act-card{border:1px solid var(--border);border-radius:4px;padding:30px 28px;background:rgba(255,255,255,.02)}
+  .act-card-label{display:block;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+  .act-card h3{font-family:var(--font-display);font-size:1.55rem;margin:0 0 12px;color:var(--ink)}
+  .act-card p{color:var(--ink-muted);font-size:.98rem;line-height:1.65;margin:0;max-width:48ch}
+  .act-card-fire{
+    border-color:rgba(140,29,43,.5);
+    background:linear-gradient(160deg, rgba(140,29,43,.18), rgba(28,22,19,.35));
+    box-shadow:0 0 0 1px rgba(140,29,43,.25), 0 24px 60px -22px rgba(140,29,43,.6);
+    animation:fireGlow 3.2s ease-in-out infinite;
+  }
+  .act-card-fire .act-card-label{color:var(--wine-hover)}
+  @keyframes fireGlow{
+    0%,100%{box-shadow:0 0 0 1px rgba(140,29,43,.25), 0 24px 60px -22px rgba(140,29,43,.5)}
+    50%{box-shadow:0 0 0 1px rgba(140,29,43,.5), 0 28px 74px -18px rgba(140,29,43,.85)}
+  }
+  @media(prefers-reduced-motion:reduce){.act-card-fire{animation:none}}
+  .act-media{margin-top:22px}
+  .act-video-wrap{max-width:220px;margin:0 auto 14px}
+  .act-video{width:100%;display:block;border-radius:6px;aspect-ratio:9/16;object-fit:cover;background:var(--bg)}
+  .act-photos{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .act-photos img{width:100%;height:170px;object-fit:cover;border-radius:6px;display:block}
+
   /* ===== BOOK ===== */
   .book{text-align:left}
   .book h2{margin-bottom:18px}
@@ -480,13 +504,30 @@
   <img class="bg-img" src="assets/web/act-bg.jpg" alt="" aria-hidden="true">
   <div class="bg-scrim"></div>
   <div class="wrap act-body">
-    <span class="eyebrow reveal" data-i18n="show_eyebrow_act">The act</span>
-    <h2 class="reveal" style="margin-top:16px" data-i18n="act_h2">A duo now. A trio from November</h2>
-    <p class="reveal" data-i18n="act_p">Two drummers hold the groove now, locked into each other as tightly as they're locked into the room. From November 2026, a third joins on bass toms - the same instinct, twice the low end, a beat that lands in the chest before the drop even hits.</p>
-    <div class="timeline reveal">
-      <div class="tl-chip now"><span class="pulse-ring" aria-hidden="true"></span><span class="tl-label" data-i18n="tl_duo">Duo</span><span class="tl-when" data-i18n="tl_duo_when">Now</span></div>
-      <div class="tl-line"></div>
-      <div class="tl-chip"><span class="tl-label" data-i18n="tl_trio">Trio</span><span class="tl-when" data-i18n="tl_trio_when">Nov 2026</span></div>
+    <span class="eyebrow reveal" data-i18n="show_eyebrow_act">The lineup</span>
+    <h2 class="reveal" style="margin-top:16px" data-i18n="act_h2">Two now. Three when you want fire.</h2>
+    <div class="act-cards">
+      <div class="act-card reveal">
+        <span class="act-card-label" data-i18n="duo_label">Duo</span>
+        <h3 data-i18n="duo_h3">Svetlana &amp; Veronika</h3>
+        <p data-i18n="duo_p">Two high-energy female drummers, perfect sync, and pure power. We captivate the audience from the very first beat, light up the crowd with a powerful groove, and turn any event into an unforgettable show.</p>
+      </div>
+      <div class="act-card act-card-fire reveal">
+        <span class="act-card-label" data-i18n="trio_label">Explosive add-on</span>
+        <h3 data-i18n="trio_h3">+ Manooson</h3>
+        <p data-i18n="trio_p">The ultimate energy boost: more rhythm and massive, immersive sound. Together, we create a powerful drum explosion that hits the crowd long before the drop.</p>
+        <div class="act-media">
+          <div class="act-video-wrap">
+            <video class="act-video" autoplay muted loop playsinline poster="assets/web/manooson-video-poster.jpg">
+              <source src="assets/web/manooson-video.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="act-photos">
+            <img src="assets/web/manooson-1.jpg" alt="Manooson performing live percussion" loading="lazy">
+            <img src="assets/web/manooson-2.jpg" alt="Manooson playing djembe on stage" loading="lazy">
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -630,11 +671,14 @@
         diff_lede: "Press play. This is what a DJ set sounds like alone - and what it sounds like with us in the room.",
         diff_tab_without: "Without us",
         diff_tab_with: "With us",
-        show_eyebrow_act: "The act",
-        act_h2: "A duo now. A trio from November",
-        act_p: "Two drummers hold the groove now, locked into each other as tightly as they're locked into the room. From November 2026, a third joins on bass toms - the same instinct, twice the low end, a beat that lands in the chest before the drop even hits.",
-        tl_duo: "Duo", tl_duo_when: "Now",
-        tl_trio: "Trio", tl_trio_when: "Nov 2026",
+        show_eyebrow_act: "The lineup",
+        act_h2: "Two now. Three when you want fire.",
+        duo_label: "Duo",
+        duo_h3: "Svetlana & Veronika",
+        duo_p: "Two high-energy female drummers, perfect sync, and pure power. We captivate the audience from the very first beat, light up the crowd with a powerful groove, and turn any event into an unforgettable show.",
+        trio_label: "Explosive add-on",
+        trio_h3: "+ Manooson",
+        trio_p: "The ultimate energy boost: more rhythm and massive, immersive sound. Together, we create a powerful drum explosion that hits the crowd long before the drop.",
         book_eyebrow: "Book the show",
         book_h2: "One message books the room",
         book_lede: "Send your date, venue and vibe - we'll get back to you with availability.",
@@ -683,10 +727,13 @@
         diff_tab_without: "Без нас",
         diff_tab_with: "С нами",
         show_eyebrow_act: "Состав",
-        act_h2: "Сейчас — дуэт. С ноября — трио",
-        act_p: "Сейчас грув держат двое барабанщиц, настроенных друг на друга так же точно, как и на зал. С ноября 2026 к ним присоединится третья — на бас-томах: та же интуиция, вдвое больше низких частот, удар, который попадает в грудь ещё до самого дропа.",
-        tl_duo: "Дуэт", tl_duo_when: "Сейчас",
-        tl_trio: "Трио", tl_trio_when: "Ноя 2026",
+        act_h2: "Двое сейчас. Трое - когда нужен взрыв.",
+        duo_label: "Дуэт",
+        duo_h3: "Светлана и Вероника",
+        duo_p: "Две зажигательные барабанщицы, идеальная синхронность и чистая энергия. Завораживаем публику с первых секунд, заводим зал мощным грувом и превращаем любое событие в эффектное шоу.",
+        trio_label: "Взрывная опция",
+        trio_h3: "+ Manooson",
+        trio_p: "Максимальное усиление драйва: ещё больше ритма и объёмного звучания. Втроём мы создаём мощный перкуссионный взрыв, который накрывает зал ещё до самого дропа.",
         book_eyebrow: "Забронировать шоу",
         book_h2: "Одно сообщение — и зал забронирован",
         book_lede: "Напишите дату, площадку и атмосферу события — мы ответим по наличию свободных дат.",
@@ -735,10 +782,13 @@
         diff_tab_without: "没有我们",
         diff_tab_with: "有了我们",
         show_eyebrow_act: "组合",
-        act_h2: "现在是二人组，11月起将成为三人组",
-        act_p: "目前由两位鼓手掌控节奏，她们彼此的默契如同与全场的共鸣一般精准。从2026年11月起，第三位鼓手将加入，负责低音鼓 — 同样的直觉，双倍的低频，在鼓点落下之前，这份震动便已直击胸腔。",
-        tl_duo: "二人组", tl_duo_when: "现在",
-        tl_trio: "三人组", tl_trio_when: "2026年11月",
+        act_h2: "现在是二人组。想要爆发，可以加到三人。",
+        duo_label: "二人组",
+        duo_h3: "Svetlana 和 Veronika",
+        duo_p: "两位充满激情的女鼓手，完美同步，纯粹的能量。从第一个节拍起就吸引全场，用强劲的律动点燃气氛，把任何活动变成一场震撼演出。",
+        trio_label: "爆炸加成",
+        trio_h3: "+ Manooson",
+        trio_p: "驱动力的终极提升：更多节奏，更具沉浸感的音墙。三人一起制造出强大的打击乐爆发，在鼓点落下之前就已经席卷全场。",
         book_eyebrow: "预订演出",
         book_h2: "一条消息，即可预订",
         book_lede: "告诉我们日期、场地和您想要的氛围 — 我们会尽快回复您档期情况。",
