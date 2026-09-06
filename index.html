@@ -404,12 +404,19 @@
   footer{padding:0 0 40px;border-top:1px solid var(--border)}
   .foot-row{display:flex;flex-direction:column;gap:18px;align-items:flex-start;padding-top:28px}
   @media(min-width:640px){.foot-row{flex-direction:row;justify-content:space-between;align-items:center}}
-  .foot-ig{font-size:.92rem;letter-spacing:.03em;color:var(--ink-muted);transition:color .2s ease}
-  .foot-ig:hover{color:var(--gold)}
-  .act-ig{display:inline-block;margin-top:16px;font-size:.85rem;letter-spacing:.03em;color:var(--gold);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .2s ease}
-  .act-ig:hover{border-color:var(--gold)}
-  .act-card-fire .act-ig{color:var(--wine-hover)}
-  .act-card-fire .act-ig:hover{border-color:var(--wine-hover)}
+  .ig-btn{
+    display:inline-flex;align-items:center;gap:9px;padding:11px 18px;margin-top:16px;
+    border:1px solid var(--gold);border-radius:2px;background:rgba(200,155,74,.1);
+    color:var(--ink);font-weight:600;font-size:.85rem;letter-spacing:.02em;text-decoration:none;
+    transition:background .25s ease, transform .25s ease, box-shadow .25s ease;
+  }
+  .ig-btn svg{width:16px;height:16px;flex:0 0 auto;color:var(--gold)}
+  .ig-btn:hover{background:rgba(200,155,74,.22);transform:translateY(-2px);box-shadow:0 10px 26px -10px rgba(200,155,74,.5)}
+  .act-card-fire .ig-btn{border-color:var(--wine-hover);background:rgba(140,29,43,.12)}
+  .act-card-fire .ig-btn svg{color:var(--wine-hover)}
+  .act-card-fire .ig-btn:hover{background:rgba(140,29,43,.22);box-shadow:0 10px 26px -10px rgba(140,29,43,.5)}
+  .foot-ig-group{display:flex;flex-wrap:wrap;gap:12px}
+  .foot-row .ig-btn{margin-top:0}
   .foot-copy{font-size:.78rem;color:var(--ink-muted);opacity:.6}
 </style>
 </head>
@@ -601,7 +608,10 @@
             <img src="assets/web/duo-1.jpg" alt="Svetlana and Veronika performing live percussion" loading="lazy">
             <img src="assets/web/duo-2.jpg" alt="Svetlana and Veronika performing at Mayan Beach Club, Goa" loading="lazy">
           </div>
-          <a class="act-ig" href="https://www.instagram.com/romb_drums/" target="_blank" rel="noopener" data-i18n="duo_ig">@romb_drums on Instagram</a>
+          <a class="ig-btn" href="https://www.instagram.com/romb_drums/" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".9" fill="currentColor" stroke="none"/></svg>
+            <span data-i18n="duo_ig">@romb_drums on Instagram</span>
+          </a>
         </div>
       </div>
       <div class="act-card act-card-fire reveal">
@@ -618,7 +628,10 @@
             <img src="assets/web/manooson-1.jpg" alt="Manooson performing live percussion" loading="lazy">
             <img src="assets/web/manooson-2.jpg" alt="Manooson playing djembe on stage" loading="lazy">
           </div>
-          <a class="act-ig" href="https://www.instagram.com/manooson.live/" target="_blank" rel="noopener" data-i18n="trio_ig">@manooson.live on Instagram</a>
+          <a class="ig-btn" href="https://www.instagram.com/manooson.live/" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".9" fill="currentColor" stroke="none"/></svg>
+            <span data-i18n="trio_ig">@manooson.live on Instagram</span>
+          </a>
         </div>
       </div>
     </div>
@@ -660,7 +673,16 @@
 
 <footer>
   <div class="wrap foot-row">
-    <a class="foot-ig" href="https://www.instagram.com/romb_drums/" target="_blank" rel="noopener" data-i18n="footer_ig">@romb_drums on Instagram</a>
+    <div class="foot-ig-group">
+      <a class="ig-btn" href="https://www.instagram.com/romb_drums/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".9" fill="currentColor" stroke="none"/></svg>
+        <span data-i18n="footer_ig">@romb_drums on Instagram</span>
+      </a>
+      <a class="ig-btn" href="https://www.instagram.com/manooson.live/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".9" fill="currentColor" stroke="none"/></svg>
+        <span data-i18n="trio_ig">@manooson.live on Instagram</span>
+      </a>
+    </div>
     <span class="foot-copy">© 2026 Drum Queens</span>
   </div>
 </footer>
