@@ -8,7 +8,7 @@ CTA (компактная кнопка, заливка винным): Book the s
 ## 1. Hero
 Eyebrow: LIVE PERCUSSION × DJ SETS
 H1: We are the pulse and heartbeat of your event
-Subhead: We are Drum Queens - live percussionists turning every DJ drop into a moment the whole room can feel
+Subhead: We are Romb Drums - live percussionists turning every DJ drop into a moment the whole room can feel
 CTA: Bring this energy to your event
 Фон: реальное видео JW Marriott Goa (jw-marriott-goa-DbfrtRGtJOZ.mp4)
 

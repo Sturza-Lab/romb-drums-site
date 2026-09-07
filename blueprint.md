@@ -1,7 +1,7 @@
 ---
 project: romb-drums-site
 created: 2026-08-13
-subject: ROMB Drums (Drum Queens)
+subject: ROMB Drums (Romb Drums)
 site_type: landing (booking EPK)
 sources_pulled: [сессия Claude Code 2026-08-13 - public Instagram API, прямые слова Марии]
 ---
@@ -17,12 +17,12 @@ sources_pulled: [сессия Claude Code 2026-08-13 - public Instagram API, п�
 дерзкий, энергичный, чувственный (sexy). НЕ сдержанно-люксовый отельный тон
 
 ## C. Glossary
-whitelist (не переводить/не менять): ROMB Drums, Drum Queens, Afro House, Goa, JW Marriott
+whitelist (не переводить/не менять): ROMB Drums, Romb Drums, Afro House, Goa, JW Marriott
 ban-list: пусто (строгий режим по умолчанию)
 
 ## D. Факты-канон facts[]
 
-- { claim: "витрина аккаунта", value: "🪘🪘 Drum Queens 🦓🦓 (@romb_drums)", source: "внешний-пруф", proof: "Instagram public API, 2026-08-13", status: "confirmed" }
+- { claim: "витрина аккаунта", value: "🪘🪘 Romb Drums 🦓🦓 (@romb_drums)", source: "внешний-пруф", proof: "Instagram public API, 2026-08-13", status: "confirmed" }
 - { claim: "подписчики", value: "8728", source: "внешний-пруф", proof: "Instagram public API, 2026-08-13", status: "confirmed" }
 - { claim: "био аккаунта", value: "The Greatest Drum Show / India / International / Weddings & Luxury Events", source: "внешний-пруф", proof: "Instagram public API, 2026-08-13", status: "confirmed" }
 - { claim: "выступление в JW Marriott Goa", value: "с DJ Lloyd World, локация Goa, India", source: "внешний-пруф", proof: "пост с геометкой и упоминанием @jwmarriott_goa", status: "confirmed" }

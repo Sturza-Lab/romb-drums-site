@@ -16,5 +16,5 @@ Locked голос (Blueprint 00b, Мария, 2026-08-13). Нет корпуса
 - без клише "unforgettable experience", "take your event to the next level" - конкретика вместо общих обещаний
 
 ## Glossary
-whitelist (не переводить/не менять): ROMB Drums, Drum Queens, Afro House, Goa, JW Marriott
+whitelist (не переводить/не менять): ROMB Drums, Romb Drums, Afro House, Goa, JW Marriott
 ban-list: пусто (строгий режим)
