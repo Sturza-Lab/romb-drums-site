@@ -35,12 +35,13 @@
   .cover-bottom{display:flex;justify-content:space-between;align-items:flex-end;font-size:9pt;color:var(--ink-muted);letter-spacing:.05em}
   .cover-bottom b{color:var(--gold);font-weight:600}
 
-  .page{width:210mm;height:297mm;position:relative;background:var(--bg);padding:24mm 20mm 26mm}
+  .page{width:210mm;height:297mm;position:relative;background:var(--bg);padding:24mm 20mm 26mm;page-break-after:always}
+  .page:last-child{page-break-after:auto}
   .page-head{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid var(--border);padding-bottom:6mm;margin-bottom:10mm}
   .page-head .eyebrow{font-size:8.5pt;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);font-weight:600}
   .page-head .brand{font-family:var(--font-display);font-weight:900;font-size:11pt;letter-spacing:.04em}
   h1{font-family:var(--font-display);font-weight:900;font-size:27pt;line-height:1.05;margin-bottom:5mm}
-  .lede{color:var(--ink-muted);font-size:10.5pt;line-height:1.6;max-width:150mm;margin-bottom:12mm}
+  .lede{color:var(--ink-muted);font-size:10.5pt;line-height:1.6;max-width:150mm;margin-bottom:10mm}
 
   .req{display:flex;gap:6mm;padding:5.5mm 0;border-bottom:1px solid var(--border);align-items:flex-start}
   .req:last-child{border-bottom:none}
@@ -50,6 +51,17 @@
     font-family:var(--font-display);font-weight:600;font-size:9.5pt;color:var(--gold);
   }
   .req .t{font-size:10.5pt;line-height:1.55;color:var(--ink);padding-top:.5mm}
+
+  .section-label{
+    font-family:var(--font-display);font-style:italic;font-weight:600;font-size:13pt;color:var(--gold);
+    margin-bottom:5mm;padding-bottom:2mm;border-bottom:1px solid var(--border);
+  }
+  .extra-list{margin-top:2mm;margin-bottom:8mm}
+  .extra-item{display:flex;gap:5mm;padding:3.2mm 0;border-bottom:1px dashed var(--border)}
+  .extra-item:last-child{border-bottom:none}
+  .extra-item .mark{color:var(--gold);font-family:var(--font-display);font-style:italic;font-weight:600}
+  .extra-item .t{font-size:10.5pt;color:var(--ink);line-height:1.5}
+  .extra-item .t b{color:var(--gold);font-weight:600}
 
   .page-foot{
     position:absolute;bottom:14mm;left:20mm;right:20mm;
@@ -78,19 +90,48 @@
 
 <div class="page">
   <div class="page-head"><span class="eyebrow">Hospitality Rider</span><span class="brand">ROMB DRUMS</span></div>
-  <h1>Before we hit the stage</h1>
-  <p class="lede">A short list that keeps the artists rested, fed and ready to give your event everything they've got.</p>
+  <h1>Travel &amp; stay</h1>
+  <p class="lede">Everything that keeps the artists rested, fed and on time for your event. All items below are provided and fully covered by the Organizer. Please confirm all points ahead of the booking.</p>
 
-  <div class="req"><span class="n">01</span><span class="t">A private green room / dressing room for artists, with a mirror, seating, good lighting, and space to change and rest</span></div>
+  <div class="section-label">01 · Traveling party</div>
+  <div class="extra-list">
+    <div class="extra-item"><span class="mark">✦</span><span class="t">2 drummers + 1 manager - 3 people traveling as one group</span></div>
+  </div>
+
+  <div class="section-label">02 · Accommodation &amp; meals</div>
+  <div class="extra-list">
+    <div class="extra-item"><span class="mark">✦</span><span class="t"><b>Hotel:</b> 4-star or above, 2 double rooms, fully covered by the Organizer</span></div>
+    <div class="extra-item"><span class="mark">✦</span><span class="t"><b>Meals:</b> full hot meal coverage for the traveling party on performance day(s)</span></div>
+  </div>
+
+  <div class="section-label">03 · Ground transportation</div>
+  <div class="extra-list">
+    <div class="extra-item"><span class="mark">✦</span><span class="t"><b>Local logistics:</b> the Organizer covers all ground transfers - Airport ↔ Hotel ↔ Venue / Soundcheck / Show</span></div>
+  </div>
+
+  <div class="section-label">04 · Air travel</div>
+  <div class="extra-list">
+    <div class="extra-item"><span class="mark">✦</span><span class="t"><b>Flights:</b> round-trip airfare for all 3 travelers, arranged and fully covered by the Organizer</span></div>
+    <div class="extra-item"><span class="mark">✦</span><span class="t"><b>Baggage:</b> the Organizer also covers checked baggage fees for percussion equipment and personal luggage</span></div>
+  </div>
+
+  <div class="page-foot"><span>Romb Drums · Hospitality Rider</span><span>Page 1 / 2</span></div>
+</div>
+
+<div class="page">
+  <div class="page-head"><span class="eyebrow">Hospitality Rider</span><span class="brand">ROMB DRUMS</span></div>
+  <h1>At the venue</h1>
+  <p class="lede">What the venue needs to have ready before the artists arrive.</p>
+
+  <div class="req"><span class="n">01</span><span class="t">A private green room / dressing room for the traveling party (3 people), with a mirror, seating, good lighting, and space to change and rest</span></div>
   <div class="req"><span class="n">02</span><span class="t">Drinking water (still) available at all times during soundcheck and performance</span></div>
   <div class="req"><span class="n">03</span><span class="t">A selection of fresh fruits and fresh juices</span></div>
-  <div class="req"><span class="n">04</span><span class="t">Meals for performers (hot food or menu access) provided on the day of the event</span></div>
-  <div class="req"><span class="n">05</span><span class="t">Tea and coffee available backstage</span></div>
-  <div class="req"><span class="n">06</span><span class="t">Clean towels</span></div>
-  <div class="req"><span class="n">07</span><span class="t">Access to a clean restroom near the performance or backstage area</span></div>
-  <div class="req"><span class="n">08</span><span class="t">Secure space to leave personal belongings</span></div>
+  <div class="req"><span class="n">04</span><span class="t">Tea and coffee available backstage</span></div>
+  <div class="req"><span class="n">05</span><span class="t">Clean towels</span></div>
+  <div class="req"><span class="n">06</span><span class="t">Access to a clean restroom near the performance or backstage area</span></div>
+  <div class="req"><span class="n">07</span><span class="t">Secure space to leave personal belongings</span></div>
 
-  <div class="page-foot"><span>Romb Drums · Hospitality Rider</span><span>Page 1 / 1</span></div>
+  <div class="page-foot"><span>Romb Drums · Hospitality Rider</span><span>Page 2 / 2</span></div>
 </div>
 
 </body>
